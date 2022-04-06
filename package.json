@@ -1,0 +1,15 @@
+{
+  "name": "jacoco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "readXML.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cvrg-report/jacoco-json": "^0.1.1",
+    "xml-js": "^1.6.11"
+  }
+}
