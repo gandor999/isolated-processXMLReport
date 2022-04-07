@@ -19,28 +19,25 @@ const processXMLReport = (xmlToJsObject) => {
   };
 
   acc.coverageSum = counter.reduce((coverage, currentValue) => {
-    acc.elements.push({
-      type: currentValue._attributes.type,
-      total:
-        parseInt(currentValue._attributes.covered) +
-        parseInt(currentValue._attributes.missed),
+    const total =
+      parseInt(currentValue._attributes.covered) +
+      parseInt(currentValue._attributes.missed);
 
-      covered: currentValue._attributes.covered,
-      skipped: null,
-      percent:
-        (parseFloat(currentValue._attributes.covered) /
-          (parseFloat(currentValue._attributes.missed) +
-            parseFloat(currentValue._attributes.covered))) *
-        100,
-      risk: 0,
-    });
-    return (
-      coverage +
+    const percent =
       (parseFloat(currentValue._attributes.covered) /
         (parseFloat(currentValue._attributes.missed) +
           parseFloat(currentValue._attributes.covered))) *
-        100
-    );
+      100;
+
+    acc.elements.push({
+      type: currentValue._attributes.type,
+      total: total,
+      covered: currentValue._attributes.covered,
+      skipped: null,
+      percent: percent,
+      risk: 0,
+    });
+    return coverage + percent;
   }, 0);
 
   const averageCoverage = acc.coverageSum / (acc.elements.length || 1);
