@@ -5,7 +5,7 @@ const xml = fs.readFileSync("./jacoco.xml", "utf-8");
 
 const xmlToJsObject = convert.xml2js(xml, { compact: true, spaces: 4 }); // seems kind of like parsing
 
-console.log(xmlToJsObject.report.counter);
+console.log(xmlToJsObject);
 
 const jacoco = require("@cvrg-report/jacoco-json");
 
